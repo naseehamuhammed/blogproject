@@ -1,0 +1,16 @@
+<!-- blog/templates/blog/blog_list.html -->
+<h1>Blog Posts</h1>
+<a href="{% url 'add_blog_post' %}">Add New Blog</a>
+<ul>
+    {% for post in posts %}
+        <li>
+            <h2>{{ post.name }}</h2>
+            <p>{{ post.description }}</p>
+           
+            {% if post.attachment %}
+            <img src="{{ post.attachment.url }}" alt="Attachment for {{ post.name }}" style="height: 150px;width: 150px;">
+        {% endif %}
+            <a href="{% url 'edit_blog_post' post.pk %}">Edit</a>
+        </li>
+    {% endfor %}
+</ul>
